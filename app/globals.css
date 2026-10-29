@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* Visual language: charcoal + white surfaces, lime-olive accent,
+   Montserrat headings, Manrope body, Geist Mono eyebrow labels. */
+@theme {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: var(--font-montserrat), var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  /* "navy" is the charcoal scale used for dark surfaces and strong text. */
+  --color-navy-950: #1a1a1a;
+  --color-navy-900: #2c2c2c;
+  --color-navy-800: #363636;
+  --color-navy-700: #3c3c3c;
+  --color-navy-600: #5a5a5a;
+
+  /* Lime-olive accent. Use dark text on 400–500; 700 is the readable text/link shade. */
+  --color-brand-50: #f7f7ea;
+  --color-brand-100: #ececd6;
+  --color-brand-200: #dcdc9c;
+  --color-brand-400: #c8c85e;
+  --color-brand-500: #b7b71b;
+  --color-brand-600: #a3a318;
+  --color-brand-700: #6b6b10;
+  --color-ig: #d62976;
+
+  /* Neutral warm greys instead of Tailwind's bluish slate. */
+  --color-slate-50: #fafaf8;
+  --color-slate-100: #f3f3ef;
+  --color-slate-200: #e4e4df;
+  --color-slate-300: #d6d6d0;
+  --color-slate-400: #a3a39d;
+  --color-slate-500: #707070;
+  --color-slate-600: #595959;
+  --color-slate-700: #474747;
+  --color-slate-800: #363636;
+  --color-slate-900: #2c2c2c;
+}
+
+:root {
+  color-scheme: light;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+}
+
+/* The page never scrolls sideways; wide content (e.g. the Kanban) scrolls inside its own container. */
+html {
+  overflow-x: clip;
+}
+
+body {
+  background: #fafaf8;
+  color: #2c2c2c;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d6d6d0 transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 180ms ease-out;
+}
+
+.typing-dot {
+  animation: dot 1.2s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
